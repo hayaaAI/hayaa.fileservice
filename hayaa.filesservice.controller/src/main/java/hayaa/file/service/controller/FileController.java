@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/file/", method = {RequestMethod.GET, RequestMethod.POST})
@@ -23,7 +25,14 @@ public class FileController {
         TransactionResult<FileResult> r = new TransactionResult<FileResult>();
         FileResult fr = new FileResult();
         fr.setDirectoryName("img");
-        fr.setFileName(file.getName());
+        fr.setFileName(file.getOriginalFilename());
+        try {
+            fr.setFileData(file.getBytes());
+        } catch (IOException e) {
+            r.setCode(103);
+            r.setMessage(e.getMessage());
+            return r;
+        }
         fileService.upload(fr);
         if (!fr.getAction()) {
             r.setCode(103);
@@ -39,7 +48,13 @@ public class FileController {
         FileResult fr = new FileResult();
         fr.setDirectoryName("doc");
         fr.setFileName(file.getName());
-        fileService.upload(fr);
+        try {
+            fr.setFileData(file.getBytes());
+        } catch (IOException e) {
+            r.setCode(103);
+            r.setMessage(e.getMessage());
+            return r;
+        }
         if (!fr.getAction()) {
             r.setCode(103);
             r.setMessage(fr.getMessage());

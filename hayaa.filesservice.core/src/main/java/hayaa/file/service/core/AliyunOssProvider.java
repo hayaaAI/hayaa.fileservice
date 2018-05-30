@@ -1,6 +1,7 @@
 package hayaa.file.service.core;
 
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.model.ObjectMetadata;
 
 import java.io.ByteArrayInputStream;
 
@@ -9,15 +10,20 @@ class AliyunOssProvider {
                                              String accessKeySecret, String bucketName,
                                              String file,String dicName, byte[] filedData) {
         OssUploadResult r = new OssUploadResult();
-        OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
+         OSSClient ossClient =null;
         try {
-            ossClient.putObject(bucketName+"/"+dicName, file, new ByteArrayInputStream(filedData));
+             ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
+            ossClient.putObject(bucketName, dicName+"/"+file, new ByteArrayInputStream(filedData));
             r.setResult(endpoint+"/"+dicName+"/"+file);
+            r.setAction(true);
         } catch (Exception ex) {
             r.setResult(false);
             r.setMessage(ex.getMessage());
+            r.setAction(false);
+        }finally {
+            ossClient.shutdown();
         }
-        ossClient.shutdown();
+
         return r;
     }
 }
