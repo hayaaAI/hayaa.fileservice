@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hayaa.worker.service.core.DepartmentMapper">
+    <select id="getList" resultType="hayaa.worker.service.model.Department">
+      select * from Department
+        <where>
+            <if test="searchPamater.ParentId != null">
+                ParentId = #{searchPamater.ParentId}
+            </if>
+            <if test="searchPamater.CompanyId != null">
+                AND CompanyId = #{searchPamater.CompanyId}
+            </if>
+            <if test="searchPamater.Name != null">
+                AND 'Name' like "%"#{searchPamater.Name}"%"
+            </if>
+            <if test="searchPamater.Title != null">
+                AND Title like "%"#{searchPamater.Title}"%"
+            </if>
+            <if test="searchPamater.BirdthdayMax != null and searchPamater.BirdthdayMin != null">
+                AND Birdthday BETWEEN #{searchPamater.BirdthdayMin} to #{searchPamater.BirdthdayMax}
+            </if>
+        </where>
+    </select>
+</mapper>

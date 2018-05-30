@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hayaa.worker.service.core.JobMapper">
+    <select id="getList" resultType="hayaa.worker.service.model.Job">
+      select * from Job
+        <where>
+            <if test="searchPamater.DepartmentId != null">
+                DepartmentId = #{searchPamater.DepartmentId}
+            </if>
+             <if test="searchPamater.Name != null">
+                AND 'Name' like "%"#{searchPamater.Name}"%"
+            </if>
+            <if test="searchPamater.Title != null">
+                AND Title like "%"#{searchPamater.Title}"%"
+            </if>
+        </where>
+    </select>
+</mapper>
