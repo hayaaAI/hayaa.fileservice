@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hayaa.fileservice.site" />
+        <module name="hayaa.filesservice" />
+        <module name="hayaa.filesservice.controller" />
+        <module name="hayaa.filesservice.core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hayaa.fileservice" target="1.8" />
+      <module name="hayaa.fileservice.site" target="1.8" />
+      <module name="hayaa.filesservice" target="1.8" />
+      <module name="hayaa.filesservice.controller" target="1.8" />
+      <module name="hayaa.filesservice.core" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

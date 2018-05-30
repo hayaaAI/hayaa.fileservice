@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hayaa.fileservice.iml" filepath="$PROJECT_DIR$/hayaa.fileservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hayaa.fileservice.site/hayaa.fileservice.site.iml" filepath="$PROJECT_DIR$/hayaa.fileservice.site/hayaa.fileservice.site.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hayaa.filesservice/hayaa.filesservice.iml" filepath="$PROJECT_DIR$/hayaa.filesservice/hayaa.filesservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hayaa.filesservice.controller/hayaa.filesservice.controller.iml" filepath="$PROJECT_DIR$/hayaa.filesservice.controller/hayaa.filesservice.controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hayaa.filesservice.core/hayaa.filesservice.core.iml" filepath="$PROJECT_DIR$/hayaa.filesservice.core/hayaa.filesservice.core.iml" />
+    </modules>
+  </component>
+</project>
